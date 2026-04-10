@@ -1,7 +1,14 @@
 {
-  "signin": {
-    "username": {
-      "instruction": "Choose your username."
-    }
+  "signup": {
+    "title": "Create your account",
+    "username": "Username",
+    "email": "Email",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "usernamePlaceholder": "Enter username",
+    "emailPlaceholder": "Enter email",
+    "firstNamePlaceholder": "Enter first name",
+    "lastNamePlaceholder": "Enter last name",
+    "submit": "Continue"
   }
 }

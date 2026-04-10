@@ -10,7 +10,7 @@ const resources = {
 i18n.use(initReactI18next).init({
   resources,
   lng: 'en',
-  fallbackLng: 'en',
+  fallbackLng: 'ko',
   supportedLngs: Object.keys(resources),
   interpolation: {
     escapeValue: false,

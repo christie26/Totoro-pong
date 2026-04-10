@@ -16,8 +16,8 @@ import {
   isOkOnReadAsArrayBuffer,
   requsetUpload,
   validateAvatarImageFile,
-} from '../sign-in/ChooseAvatar';
-import { SelectAvatar } from '../sign-in/SelectAvatar';
+} from '../sign-up/ChooseAvatar';
+import { SelectAvatar } from '../sign-up/SelectAvatar';
 
 const avatars: string[] = [
   '/avatar/avatar-blue.svg',

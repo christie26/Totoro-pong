@@ -16,7 +16,7 @@ export type PageType =
   | 'root'
   | 'dm'
   | 'chat'
-  | 'signIn'
+  | 'signUp'
   | 'game'
   | 'profile'
   | 'history'
@@ -36,7 +36,7 @@ const getRedirecPath = (page: PageType, phase: string) => {
     case 'root':
       if (phase === 'complete') redirectPath = RedirectPaths.Freind;
       break;
-    case 'signIn':
+    case 'signUp':
       if (phase === 'complete') redirectPath = RedirectPaths.Freind;
       break;
     default:
