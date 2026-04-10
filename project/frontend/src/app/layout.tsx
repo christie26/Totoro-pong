@@ -4,6 +4,7 @@ import { ModeContextProvider } from '@-ft/mode-next';
 import { cookies } from 'next/headers';
 import { PropsWithChildren } from 'react';
 import { ApiContextProvider } from './_internal/provider/ApiContextProvider';
+import { I18nProvider } from './_internal/provider/I18nProvider';
 import { QueryClientProvider } from './_internal/provider/QueryClientProvider';
 
 export default function Layout({ children }: Readonly<PropsWithChildren>) {
@@ -23,7 +24,7 @@ export default function Layout({ children }: Readonly<PropsWithChildren>) {
         <QueryClientProvider>
           <ApiContextProvider>
             <ModeContextProvider variableName="npm:@-ft/mode-codegen">
-              {children}
+              <I18nProvider>{children}</I18nProvider>
             </ModeContextProvider>
           </ApiContextProvider>
         </QueryClientProvider>

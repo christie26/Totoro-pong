@@ -2,6 +2,7 @@
 
 import { UniqueCheckResponse } from '@/api/api';
 import { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ApiContext } from '../../app/_internal/provider/ApiContext';
 import { Button } from '../common/Button';
 
@@ -19,6 +20,7 @@ export default function ChooseNickname({
   const [isError, setIsError] = useState(false);
   const [showSuccessToast, setShowSuccessToast] = useState(false);
   const [showFailToast, setShowFailToast] = useState(false);
+  const { t, i18n } = useTranslation();
 
   function isNicknameValid(nickname: string): boolean {
     const nicknameRegex = /^[a-zA-Z0-9\-_]{6,12}$/;
@@ -46,7 +48,6 @@ export default function ChooseNickname({
       console.error('Error during unique check:', error);
     }
   };
-
   function handleNicknameChange(e: React.ChangeEvent<HTMLInputElement>) {
     const newNickname = e.target.value;
     setNickname(newNickname);
@@ -65,14 +66,13 @@ export default function ChooseNickname({
   return (
     <div className="w-[500px] h-[500px]">
       <div className="w-2xl h-[400px] bg-light-background rounded-lg flex flex-col justify-center items-center">
-        <h2 className=" mb-xl">1. 사용하실 닉네임을 입력하세요.</h2>
-        {render()}
+        <h2 className="mb-xl">{t('signin.username.instruction')}</h2> {render()}
       </div>
     </div>
   );
   function render() {
     if (isError) {
-      return <>알 수 없는 에러입니다.</>;
+      return <>{t('common.unknown-error')}</>;
     } else {
       return (
         <div className="flex flex-col">
@@ -86,20 +86,18 @@ export default function ChooseNickname({
                 className="ml-md mr-md border-2 border-gray p-[2px]"
               />
               <p className="text-sm text-dark-gray ml-md mt-md">
-                닉네임은 6-12자 이어야 합니다. <br />
-                영문, 숫자, -, _ 중에서 사용하세요.{' '}
+                {t('signin.username.rule1')} <br />
+                {t('signin.username.rule2')}
               </p>
               {showSuccessToast && (
-                <div className={css}>사용 가능한 아이디 입니다.</div>
+                <div className={css}>{t('signin.username.ok')}</div>
               )}
               {showFailToast && (
-                <div className={css}>
-                  이미 사용중인 아이디입니다. 다른 아이디를 선택하세요
-                </div>
+                <div className={css}>{t('signin.username.used')}</div>
               )}
             </div>
             <Button onClick={handleButtonClick} disabled={!isValid}>
-              중복확인
+              {t('signin.username.double-check')}
             </Button>
           </div>
           <div className="self-end mt-xl">
@@ -111,7 +109,7 @@ export default function ChooseNickname({
               }}
               disabled={!isValid || !isUnique}
             >
-              다음으로
+              {t('common.next')}
             </Button>
           </div>
         </div>
