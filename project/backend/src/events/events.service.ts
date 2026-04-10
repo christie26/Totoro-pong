@@ -95,9 +95,8 @@ export class EventsService {
     this.addClientAtSocketMap(client); // 소켓의 새로운 접속을 반영
 
     // 아래는 그저 유저에게 유용한 정보 전달.
-    const { dmChannels, channels } = await this.getUserJoinedChannelInfos(
-      client,
-    );
+    const { dmChannels, channels } =
+      await this.getUserJoinedChannelInfos(client);
 
     // TODO: Game 상태까지 고려하기
     const allOnlineUsers = this.getAllOnlineUsers();
@@ -441,8 +440,8 @@ export class EventsService {
     return isOnGame
       ? EnumUserStatus.ONGAME
       : isUserOnline
-      ? EnumUserStatus.ONLINE
-      : EnumUserStatus.OFFLINE;
+        ? EnumUserStatus.ONLINE
+        : EnumUserStatus.OFFLINE;
   };
   private addClientAtSocketMap(client: UserSocket) {
     const userId = client.data.userId as string;
@@ -551,6 +550,7 @@ export class EventsService {
       const player1 = playersIterator.next().value;
       const player2 = playersIterator.next().value;
 
+      if (!player1 || !player2) return;
       this.createGameRoom(player1, player2, itemMode);
     }
   }
@@ -658,8 +658,8 @@ export class EventsService {
       itemMode === undefined
         ? [this.itemMatchQueue, this.normalMatchQueue]
         : itemMode === true
-        ? [this.itemMatchQueue]
-        : [this.normalMatchQueue];
+          ? [this.itemMatchQueue]
+          : [this.normalMatchQueue];
     clients.forEach((client) => {
       qs.forEach((q) => q.delete(client));
       this.readyUsers.delete(client.data.userId as string);
