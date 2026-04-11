@@ -6,7 +6,7 @@ import { useQuery } from 'react-query';
 enum RedirectPaths {
   Root = '/',
   Freind = '/friend',
-  SignIn = '/sign-in',
+  SignUp = '/sign-up',
   TwoFa = '/2fa',
 }
 
@@ -41,7 +41,7 @@ const getRedirecPath = (page: PageType, phase: string) => {
       break;
     default:
       // 일반 페이지의 기본 리디렉션 로직
-      if (phase === 'register') redirectPath = RedirectPaths.SignIn;
+      if (phase === 'register') redirectPath = RedirectPaths.SignUp;
       else if (phase === '2fa') redirectPath = RedirectPaths.TwoFa;
       else if (phase !== 'complete') redirectPath = RedirectPaths.Root;
       break;

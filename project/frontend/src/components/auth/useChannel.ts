@@ -18,7 +18,7 @@ export const useChannel = (channelId: string) => {
       const me = data[0].data;
       const channel = data[1].data;
 
-      if (me?.data.phase === 'register') router.replace('/sign-in');
+      if (me?.data.phase === 'register') router.replace('/sign-up');
       else if (me?.data.phase === 'complete')
         localStorage.setItem('me', JSON.stringify(me.data.me));
       else if (me?.data.phase === '2fa') router.replace('/2fa');
