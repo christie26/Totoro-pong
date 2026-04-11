@@ -86,8 +86,8 @@ export class AuthController {
     this.logger.debug(`oauth42 코드 jwtPayload ${JSON.stringify(jwtPayload)}`);
     switch (jwtPayload['phase']) {
       case 'register':
-        this.logger.debug('리다이렉트 => /sign-up');
-        res.redirect('/sign-up');
+        this.logger.debug('리다이렉트 => /onboarding');
+        res.redirect('/onboarding');
         break;
       case '2fa':
         this.logger.debug('리다이렉트 => /2fa');

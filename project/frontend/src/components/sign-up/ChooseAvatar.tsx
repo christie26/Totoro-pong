@@ -4,7 +4,7 @@ import { ApiContext } from '@/app/_internal/provider/ApiContext';
 import { avatarToUrl } from '@/app/_internal/util/avatarToUrl';
 import Image from 'next/image';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { Button } from '../common/Button';
+import { useTranslation } from 'react-i18next';
 import { SelectAvatar } from './SelectAvatar';
 
 type ChooseAvatarProps = {
@@ -56,6 +56,7 @@ export default function ChooseAvatar({
   const [loadFileResult, setLoadFileResult] = useState<FileResult | null>(null);
   const { api } = useContext(ApiContext);
   const [isError, setIsError] = useState(false);
+  const { t } = useTranslation();
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const fileInputElement = event.target;
@@ -160,8 +161,8 @@ export default function ChooseAvatar({
   }, [uploadImage]);
 
   return (
-    <div className="w-2xl h-[400px] bg-light-background rounded-lg flex flex-col justify-center items-center px-2xl">
-      <h2 className="font-bold mb-lg">2. 사용하실 아바타를 선택하세요.</h2>
+    <div className="w-xl flex flex-col">
+      <label className="text-sm mb-xs">{t('signup.avatar')}</label>
       {render()}
     </div>
   );
@@ -172,7 +173,7 @@ export default function ChooseAvatar({
     } else {
       return (
         <div className="flex flex-col justify-center items-center">
-          <div className="grid grid-cols-3 grid-flow-row gap-xl mb-lg">
+          <div className="grid grid-cols-2 grid-flow-row gap-xl mb-lg">
             {avatars.map((avatar) => (
               <SelectAvatar
                 key={avatar}
@@ -201,11 +202,6 @@ export default function ChooseAvatar({
             className="text-md ml-[120px]"
             onChange={handleFileChange}
           />
-          <div className="self-end">
-            <Button onClick={onClickNextBtn} disabled={!selectedAvatar}>
-              다음으로
-            </Button>
-          </div>
         </div>
       );
     }

@@ -8,5 +8,22 @@
     "loginGoogle": "Google로 로그인",
     "forgotPassword": "비밀번호를 잊으셨나요?",
     "signUp": "아직 계정이 없으신가요?"
+  },
+  "signup": {
+    "title": "회원가입",
+    "username": "아이디",
+    "email": "이메일",
+    "firstName": "이름",
+    "lastName": "성",
+    "avatar": "아바타 선택",
+    "submit": "가입하기",
+    "usernamePlaceholder": "닉네임을 입력하세요",
+    "firstNamePlaceholder": "이름을 입력하세요",
+    "lastNamePlaceholder": "성을 입력하세요",
+    "emailPlaceholder": "이메일을 입력하세요",
+    "error": {
+      "missing": "필수 항목을 모두 입력해주세요",
+      "failed": "회원가입에 실패했습니다"
+    }
   }
 }

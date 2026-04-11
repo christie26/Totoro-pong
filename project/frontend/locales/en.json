@@ -8,5 +8,22 @@
     "loginGoogle": "Login with Google",
     "forgotPassword": "Forgot password?",
     "signUp": "Don't have account yet?"
+  },
+  "signup": {
+    "title": "Create your account",
+    "username": "Username",
+    "email": "Email",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "avatar": "Choose your avatar",
+    "submit": "Sign up",
+    "usernamePlaceholder": "Put your username",
+    "firstNamePlaceholder": "Put your firstname",
+    "lastNamePlaceholder": "Put your lastname",
+    "emailPlaceholder": "Put your email",
+    "error": {
+      "missing": "Please fill all required fields",
+      "failed": "Sign up failed"
+    }
   }
 }

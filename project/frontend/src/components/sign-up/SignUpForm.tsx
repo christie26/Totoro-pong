@@ -73,7 +73,6 @@ export default function SignUpForm({ form, setForm, onSubmit }: Props) {
 }
 
 const avatars: string[] = [
-  '/avatar/avatar-blue.svg',
   '/avatar/avatar-black.svg',
   '/avatar/avatar-big.svg',
   '/avatar/avatar-small.svg',
