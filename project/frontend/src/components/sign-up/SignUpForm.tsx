@@ -1,6 +1,8 @@
 'use client';
 
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import ChooseAvatar from './ChooseAvatar';
 
 type Props = {
   form: {
@@ -15,6 +17,7 @@ type Props = {
 
 export default function SignUpForm({ form, setForm, onSubmit }: Props) {
   const { t } = useTranslation();
+  const [avatar, setAvatar] = useState(() => '');
 
   const handleChange =
     (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +26,12 @@ export default function SignUpForm({ form, setForm, onSubmit }: Props) {
         [field]: e.target.value,
       }));
     };
-
+  const handleChooseClick = useCallback(
+    (selectedAvatar: string) => {
+      setAvatar(selectedAvatar);
+    },
+    [setAvatar],
+  );
   return (
     <div className="flex flex-col gap-md">
       <Input
@@ -53,7 +61,7 @@ export default function SignUpForm({ form, setForm, onSubmit }: Props) {
         onChange={handleChange('lastName')}
         placeholder={t('signup.lastNamePlaceholder')}
       />
-
+      <ChooseAvatar avatars={avatars} onChooseClick={handleChooseClick} />
       <button
         onClick={onSubmit}
         className="mt-lg bg-black text-white p-md rounded"
@@ -63,6 +71,13 @@ export default function SignUpForm({ form, setForm, onSubmit }: Props) {
     </div>
   );
 }
+
+const avatars: string[] = [
+  '/avatar/avatar-blue.svg',
+  '/avatar/avatar-black.svg',
+  '/avatar/avatar-big.svg',
+  '/avatar/avatar-small.svg',
+];
 
 /* reusable input */
 function Input({

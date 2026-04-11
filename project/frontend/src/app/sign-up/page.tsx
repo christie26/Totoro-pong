@@ -1,11 +1,12 @@
 'use client';
+import withAuth from '@/components/auth/withAuth';
 
 import { ApiContext } from '@/app/_internal/provider/ApiContext';
 import SignUpForm from '@/components/sign-up/SignUpForm';
 import { useRouter } from 'next/navigation';
 import { useCallback, useContext, useState } from 'react';
 
-export default function SignUpPage() {
+function SignUpPage() {
   const { api } = useContext(ApiContext);
   const router = useRouter();
 
@@ -43,3 +44,5 @@ export default function SignUpPage() {
     </div>
   );
 }
+
+export default withAuth(SignUpPage, 'signUp');
