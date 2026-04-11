@@ -1,14 +1,12 @@
 {
-  "signup": {
-    "title": "Create your account",
+  "signin": {
+    "title": "Welcome to Ping Pong World 🏓",
     "username": "Username",
-    "email": "Email",
-    "firstName": "First name",
-    "lastName": "Last name",
-    "usernamePlaceholder": "Enter username",
-    "emailPlaceholder": "Enter email",
-    "firstNamePlaceholder": "Enter first name",
-    "lastNamePlaceholder": "Enter last name",
-    "submit": "Continue"
+    "password": "Password",
+    "login": "Login",
+    "login42": "Login with 42",
+    "loginGoogle": "Login with Google",
+    "forgotPassword": "Forgot password?",
+    "signUp": "Don't have account yet?"
   }
 }
