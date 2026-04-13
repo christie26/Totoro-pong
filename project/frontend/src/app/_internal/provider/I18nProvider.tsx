@@ -1,6 +1,5 @@
 'use client';
 
-import '@/i18n'; // side-effect init
 import i18n from '@/i18n';
 import { PropsWithChildren, useEffect } from 'react';
 
