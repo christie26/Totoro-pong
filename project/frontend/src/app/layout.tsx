@@ -14,7 +14,7 @@ export default function Layout({ children }: Readonly<PropsWithChildren>) {
       suppressHydrationWarning
     >
       <head>
-        <title>ft_transcendence</title>
+        <title>hypertube-어묵탕</title>
         <link rel="icon" href="/avatar-black.ico" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
