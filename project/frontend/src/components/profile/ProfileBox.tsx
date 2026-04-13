@@ -203,10 +203,11 @@ export function ProfileBox() {
           value={passwordForm.confirmPassword}
           onChange={handlePasswordChange}
         />
-
-        <Button onClick={handleChangePassword}>
-          {t('setting.update-password')}
-        </Button>
+        <div className="flex gap-md">
+          <Button onClick={handleChangePassword}>
+            {t('setting.update-password')}
+          </Button>
+        </div>
       </div>
     </div>
   );
