@@ -14,8 +14,10 @@ export type PageType =
   | 'root'
   | 'signIn'
   | 'signUp'
-  | 'profile'
   | 'onboarding'
+  | 'friend'
+  | 'video'
+  | 'profile'
   | '';
 
 export const LocalStorageMeKey = 'me';
