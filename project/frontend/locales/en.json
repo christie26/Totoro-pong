@@ -1,4 +1,8 @@
 {
+  "common": {
+    "logout": "log out",
+    "language": "lang"
+  },
   "signin": {
     "title": "Welcome to Ping Pong World 🏓",
     "username": "Username",
