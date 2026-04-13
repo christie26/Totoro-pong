@@ -20,24 +20,25 @@ function OnboardingPage() {
   const { api } = useContext(ApiContext);
   const router = useRouter();
 
-  const [username, setUsername] = useState('');
-  const [avatar, setAvatar] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
 
-  const isValid = username !== '' && avatar !== '';
+  const isValid = nickname !== '' && imageUrl !== '';
 
-  const handleSubmit = useCallback(async () => {
-    if (!isValid) return;
-
-    try {
-      await api.authControllerRegister({
-        nickname: username,
-        imageUrl: avatar,
-      });
-      router.push('/friend');
-    } catch (e) {
-      console.error(e);
+  const handleSubmitClick = useCallback(async () => {
+    if (!nickname || !imageUrl) {
+      alert('no nickname or image url');
+      console.error('no nickname or image url');
+      return;
     }
-  }, [api, username, avatar, router, isValid]);
+    try {
+      await api.authControllerRegister({ nickname, imageUrl });
+      router.push('/');
+    } catch (error: any) {
+      error?.error?.message && alert(`${error?.error?.message}`);
+      console.error('error', error);
+    }
+  }, [api, imageUrl, nickname, router]);
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -45,9 +46,9 @@ function OnboardingPage() {
         <h2>{t('onboarding.title')}</h2>
 
         <input
-          placeholder={t('onboarding.username')}
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder={t('onboarding.nickname')}
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
           className="border p-sm"
         />
 
@@ -57,15 +58,15 @@ function OnboardingPage() {
               key={a}
               src={avatarToUrl(a)}
               className={`cursor-pointer ${
-                avatar === a ? 'border-2 border-purple' : ''
+                imageUrl === a ? 'border-2 border-purple' : ''
               }`}
               width={60}
-              onClick={() => setAvatar(a)}
+              onClick={() => setImageUrl(a)}
             />
           ))}
         </div>
 
-        <Button disabled={!isValid} onClick={handleSubmit}>
+        <Button disabled={!isValid} onClick={handleSubmitClick}>
           {t('onboarding.submit')}
         </Button>
       </div>
@@ -73,4 +74,4 @@ function OnboardingPage() {
   );
 }
 
-export default withAuth(OnboardingPage, '');
+export default withAuth(OnboardingPage, 'onboarding');

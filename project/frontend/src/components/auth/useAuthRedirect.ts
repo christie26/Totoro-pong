@@ -10,7 +10,13 @@ enum RedirectPaths {
   Onboarding = '/onboarding',
 }
 
-export type PageType = 'root' | 'signIn' | 'signUp' | 'profile' | '';
+export type PageType =
+  | 'root'
+  | 'signIn'
+  | 'signUp'
+  | 'profile'
+  | 'onboarding'
+  | '';
 
 export const LocalStorageMeKey = 'me';
 

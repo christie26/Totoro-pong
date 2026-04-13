@@ -25,5 +25,10 @@
       "missing": "Please fill all required fields",
       "failed": "Sign up failed"
     }
+  },
+  "onboarding": {
+    "title": "Put your information to finish signing up",
+    "username": "Choose your username",
+    "submit": "submittt"
   }
 }
