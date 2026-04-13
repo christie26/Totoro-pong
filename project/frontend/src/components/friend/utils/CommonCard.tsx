@@ -1,5 +1,4 @@
 import useFriendInviteStore from '@/components/common/FriendInvite';
-import { LiveStatus } from '@/components/common/LiveStatus';
 import { ProfileModal } from '@/components/profile/ProfileModal';
 import { ReactNode, useState } from 'react';
 import FriendAvatar from './FriendAvatar';
@@ -8,6 +7,8 @@ interface CommonCardProps {
   readonly children: ReactNode;
   readonly imageUrl?: string;
   readonly nickname: string;
+  readonly firstName?: string;
+  readonly lastName?: string;
   readonly id: string;
   readonly refetch: () => Promise<unknown>;
 }
@@ -17,6 +18,8 @@ export function CommonCard({
   imageUrl,
   nickname,
   id,
+  firstName,
+  lastName,
   refetch,
 }: CommonCardProps) {
   const [gameModeLocal, setGameModeLocal] = useState<'normal' | 'item'>(
@@ -50,7 +53,9 @@ export function CommonCard({
         <div className="text-left text-black text-h3  font-light font-agro">
           {nickname}
         </div>
-        <LiveStatus targetId={id} />
+        <div className="text-left text-black text-md font-light">
+          {firstName} {lastName}
+        </div>
       </div>
       <div className="absolute right-xl flex items-center">{children}</div>
       <ProfileModal

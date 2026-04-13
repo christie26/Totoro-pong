@@ -34,5 +34,8 @@
     "title": "Put your information to finish signing up",
     "username": "Choose your username",
     "submit": "submittt"
+  },
+  "friend": {
+    "search-friend": "Search Friends"
   }
 }

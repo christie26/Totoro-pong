@@ -34,5 +34,8 @@
     "title": "Complétez votre inscription en entrant vos informations",
     "username": "Choisissez votre nom d'utilisateur",
     "submit": "Terminer"
+  },
+  "friend": {
+    "search friend": "Rechercher des amis"
   }
 }

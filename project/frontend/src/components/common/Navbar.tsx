@@ -21,7 +21,6 @@ const Navbar = () => {
 
   const toggleLangMenu = () => setIsLangOpen((prev) => !prev);
   const handleLanguageChange = (selected: Lang) => {
-    console.log(selected);
     setLang(selected);
     i18n.changeLanguage(selected);
     localStorage.setItem('lang', selected);

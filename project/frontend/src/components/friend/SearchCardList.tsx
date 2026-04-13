@@ -1,18 +1,17 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { unwrap } from '@/api/unwrap';
+import { useCallback, useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { ApiContext } from '../../app/_internal/provider/ApiContext';
+import { Loading } from '../common/Loading';
 import { MessageSearchInput } from '../dm/message-search/MessageSearchInput';
 import { SearchCard } from './SearchCard';
-import { Loading } from '../common/Loading';
-import { unwrap } from '@/api/unwrap';
 
-export function SearchCardList({
-  activeScreen,
-}: {
-  readonly activeScreen: string;
-}) {
+export function SearchCardList({}: {}) {
   const { api } = useContext(ApiContext);
   const [searchName, setSearchName] = useState('');
+  const { t } = useTranslation();
+
   const { isLoading, isError, data, refetch } = useQuery(
     ['searchList', searchName],
     useCallback(
@@ -26,12 +25,6 @@ export function SearchCardList({
     ),
   );
 
-  useEffect(() => {
-    if (activeScreen === 'search') {
-      refetch();
-    }
-  }, [activeScreen, refetch]);
-
   const userSearchCallback = (searchUsername: string) => {
     setSearchName(searchUsername);
   };
@@ -42,7 +35,7 @@ export function SearchCardList({
         <MessageSearchInput
           width="600px"
           height="30px"
-          placeholder="Search Friends"
+          placeholder={t('friend.search-friend')}
           eventFunction={userSearchCallback}
         />
         <div className="w-[700px] h-[580px] grid gap-lg justify-center items-start overflow-y-scroll mt-xl place-content-start">

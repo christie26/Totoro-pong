@@ -34,5 +34,8 @@
     "title": "Completa tu registro introduciendo tu información",
     "username": "Elige tu nombre de usuario",
     "submit": "Finalizar"
+  },
+  "friend": {
+    "search friend": "Buscar amigos"
   }
 }

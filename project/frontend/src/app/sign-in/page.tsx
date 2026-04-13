@@ -16,10 +16,6 @@ function SignInPage() {
   const handleForget = () => {
     console.log('forget password');
   };
-  const handleSignUp = () => {
-    console.log('handleSignUp');
-  };
-
   const CSS_BUTTON =
     'bg-default-interactive rounded-md w-xl h-sm border-3 border-dark-purple text-dark-purple font-bold text-h2 text-center font-jeonju cursor-pointer transition-all duration-300 hover:shadow-custom hover:-translate-y-[0.148rem] flex justify-center items-center';
 
