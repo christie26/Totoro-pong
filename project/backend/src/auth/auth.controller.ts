@@ -94,7 +94,7 @@ export class AuthController {
         res.redirect('/2fa');
         break;
       case 'complete':
-        this.logger.debug('리다이렉트 => welcome => /friend');
+        this.logger.debug('리다이렉트 => welcome => /');
         this.welcome(res, 'FT');
         break;
     }
@@ -168,7 +168,7 @@ export class AuthController {
   private welcome(res: ExpressResponse, type: AuthType) {
     switch (type) {
       case 'FT':
-        res.redirect('/friend');
+        res.redirect('/');
     }
   }
 }
