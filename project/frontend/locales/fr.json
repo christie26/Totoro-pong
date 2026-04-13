@@ -36,6 +36,6 @@
     "submit": "Terminer"
   },
   "friend": {
-    "search friend": "Rechercher des amis"
+    "search-friend": "Rechercher des amis"
   }
 }
