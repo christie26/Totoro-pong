@@ -5,45 +5,32 @@ import { useQuery } from 'react-query';
 
 enum RedirectPaths {
   Root = '/',
-  Freind = '/friend',
+  SignIn = '/sign-in',
   SignUp = '/sign-up',
-  TwoFa = '/2fa',
+  Onboarding = '/onboarding',
 }
 
-export type PageType =
-  | '2fa'
-  | 'friend'
-  | 'root'
-  | 'dm'
-  | 'chat'
-  | 'signUp'
-  | 'game'
-  | 'profile'
-  | 'history'
-  | '';
+export type PageType = 'root' | 'signIn' | 'signUp' | 'profile' | '';
 
 export const LocalStorageMeKey = 'me';
 
 const getRedirecPath = (page: PageType, phase: string) => {
   let redirectPath = '';
   switch (page) {
-    case '2fa':
-      if (phase === 'complete') redirectPath = RedirectPaths.Freind;
-      break;
-    case 'friend':
-      // Friend 페이지에는 별도의 리디렉션이 필요하지 않음
-      break;
     case 'root':
-      if (phase === 'complete') redirectPath = RedirectPaths.Freind;
+      if (phase === 'register') redirectPath = RedirectPaths.Onboarding;
+      else if (phase !== 'complete') redirectPath = RedirectPaths.SignIn;
       break;
     case 'signUp':
-      if (phase === 'complete') redirectPath = RedirectPaths.Freind;
+      if (phase === 'complete') redirectPath = RedirectPaths.Root;
+      break;
+    case 'signIn':
+      if (phase === 'complete') redirectPath = RedirectPaths.Root;
+      else if (phase === 'register') redirectPath = RedirectPaths.Onboarding;
       break;
     default:
-      // 일반 페이지의 기본 리디렉션 로직
-      if (phase === 'register') redirectPath = RedirectPaths.SignUp;
-      else if (phase === '2fa') redirectPath = RedirectPaths.TwoFa;
-      else if (phase !== 'complete') redirectPath = RedirectPaths.Root;
+      if (phase === 'register') redirectPath = RedirectPaths.Onboarding;
+      else if (phase !== 'complete') redirectPath = RedirectPaths.SignIn;
       break;
   }
   return redirectPath;
@@ -56,7 +43,6 @@ const useAuthRedirect = (pageType: PageType) => {
   const { isLoading } = useQuery('auth', api.usersControllerMyProfile, {
     onSuccess: (data) => {
       const { id, phase, me } = data.data;
-      // console.log(id, phase, me);
       if (phase === 'complete' && me !== undefined) {
         localStorage.setItem(LocalStorageMeKey, JSON.stringify(me));
       } else {
@@ -69,6 +55,9 @@ const useAuthRedirect = (pageType: PageType) => {
     },
     onError: (_err) => {
       localStorage.removeItem(LocalStorageMeKey);
+      if (pageType === 'signIn' || pageType === 'signUp') {
+        return;
+      }
       api
         .authControllerLogout()
         .then(() => {})
@@ -76,7 +65,7 @@ const useAuthRedirect = (pageType: PageType) => {
           console.error('Logout error:', error);
         })
         .finally(() => {
-          router.replace(RedirectPaths.Root);
+          router.replace(RedirectPaths.SignIn);
         });
     },
     retry: false,
