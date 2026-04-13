@@ -1,7 +1,6 @@
 'use client';
 
 import withAuth from '@/components/auth/withAuth';
-import Navbar from '@/components/common/Navbar';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -28,8 +27,6 @@ function SignInPage() {
 
   return (
     <div className="flex flex-row w-[inherit] h-[100%]">
-      <Navbar />
-
       <div className="w-2xl h-[500px] m-auto">
         <div className="w-full h-full bg-light-background rounded-lg flex flex-col gap-lg justify-center items-center p-xl">
           {/* 🏓 Title */}

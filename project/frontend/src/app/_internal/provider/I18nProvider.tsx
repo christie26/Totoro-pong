@@ -5,6 +5,14 @@ import i18n from '@/i18n';
 import { PropsWithChildren, useEffect } from 'react';
 
 const LANG_KEY = 'lang';
+export type Lang = 'en' | 'ko' | 'es' | 'fr';
+
+export const languageMap: Record<Lang, { text: string; icon: string }> = {
+  en: { text: 'English', icon: '🇬🇧' },
+  ko: { text: '한국어', icon: '🇰🇷' },
+  es: { text: 'Español', icon: '🇪🇸' },
+  fr: { text: 'Français', icon: '🇫🇷' },
+};
 
 export function I18nProvider({ children }: PropsWithChildren) {
   useEffect(() => {

@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 const ButtonCVA = cva(['text-center font-mayo font-semibold'], {
   variants: {
     size: {
-      small: ['w-md h-xs', 'text-md'],
+      small: ['w-[60px] h-xs', 'text-md'],
       medium: ['w-lg h-sm', 'text-lg'],
       big: ['w-lg h-sm', 'text-lg', 'absolute top-xl right-xl'],
     },

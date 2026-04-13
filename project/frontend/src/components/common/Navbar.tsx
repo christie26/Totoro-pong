@@ -1,30 +1,27 @@
 'use client';
 import { ApiContext } from '@/app/_internal/provider/ApiContext';
+import { Lang, languageMap } from '@/app/_internal/provider/I18nProvider';
 import i18n from '@/i18n';
-import { useRouter } from 'next/navigation';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useCallback, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from './Button';
 import Logo from './Logo';
 import NavIcon from './NavIcon';
-import useToast from './useToast';
 
 const Navbar = () => {
-  const [errorMessage, setErrorMessage] = useState(() => '');
   const router = useRouter();
-  const { message, closeMessage } = useToast();
   const { api } = useContext(ApiContext);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const [lang, setLang] = useState<Lang>('en');
   const { t } = useTranslation();
 
-  useEffect(() => {
-    setTimeout(() => closeMessage(), 2000);
-  }, [message, closeMessage]);
-
-  const [isLangOpen, setIsLangOpen] = useState(false);
-  const [lang, setLang] = useState(() => localStorage.getItem('lang') || 'en');
+  const path = usePathname();
+  const isAuthPage = path === '/sign-in' || path === '/sign-up';
 
   const toggleLangMenu = () => setIsLangOpen((prev) => !prev);
-  const handleLanguageChange = (selected: string) => {
+  const handleLanguageChange = (selected: Lang) => {
+    console.log(selected);
     setLang(selected);
     i18n.changeLanguage(selected);
     localStorage.setItem('lang', selected);
@@ -46,45 +43,45 @@ const Navbar = () => {
     }
   }, [api, router]);
 
-  const css =
-    'fixed w-[300px] h-[100px] left-1/2 p-sm transform -translate-x-1/2 translate-y-1/2 flex justify-center items-center bg-default border-3 border-dark-purple text-dark-purple rounded-md z-50 text-h3';
   return (
     <>
-      {message && <div className={css}>{message}</div>}
-      {errorMessage && <div className={css}>{errorMessage}</div>}
-
       <nav
         className={
-          'flex flex-col w-[80px] min-h-[750px] h-[inherit] bg-default items-center'
+          'flex flex-col min-w-[80px] min-h-[750px] h-[inherit] bg-default items-center'
         }
       >
         <Logo />
-        <NavIcon type="friend" />
-        <NavIcon type="video" />
-        <NavIcon type="profile" />
+        <NavIcon type="friend" isAuthPage={isAuthPage} />
+        <NavIcon type="video" isAuthPage={isAuthPage} />
+        <NavIcon type="profile" isAuthPage={isAuthPage} />
         <div className="mt-auto mb-xl flex flex-col gap-lg">
           <div className="relative mt-auto">
-            <Button onClick={toggleLangMenu}>{t('common.language')}</Button>
+            <Button onClick={toggleLangMenu}>
+              {' '}
+              {t('common.language')} {languageMap[lang].icon}
+            </Button>
             {isLangOpen && (
-              <div className="absolute left-[90px] top-0 bg-white border border-gray-300 rounded-md shadow-md p-sm">
-                {[
-                  { code: 'en', label: '🇬🇧 English' },
-                  { code: 'ko', label: '🇰🇷 한국어' },
-                  // { code: 'es', label: '🇪🇸 Español' },
-                  // { code: 'fr', label: '🇫🇷 Français' },
-                ].map((item) => (
+              <div className="absolute left-[90px] bottom-0 bg-white border border-gray-300 rounded-md shadow-md p-sm">
+                {(
+                  Object.entries(languageMap) as [
+                    Lang,
+                    (typeof languageMap)[Lang],
+                  ][]
+                ).map(([code, value]) => (
                   <button
-                    key={item.code}
-                    onClick={() => handleLanguageChange(item.code)}
+                    key={code}
+                    onClick={() => handleLanguageChange(code)}
                     className="block px-4 py-2 hover:bg-gray-100 w-full text-left whitespace-nowrap"
                   >
-                    {item.label}
+                    {value.icon} {value.text}
                   </button>
                 ))}
               </div>
             )}
           </div>
-          <Button onClick={handleLogout}>{t('common.logout')}</Button>
+          <Button onClick={handleLogout} disabled={isAuthPage}>
+            {t('common.logout')}
+          </Button>
         </div>
       </nav>
     </>
