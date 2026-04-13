@@ -1,6 +1,6 @@
 import { NavbarLayout } from '@/components/common/NavbarLayout';
 
-export default function ProfileLayout({
+export default function DefaultLayout({
   children,
 }: {
   children: React.ReactNode;
