@@ -34,7 +34,7 @@ function SignInPage() {
           <div className="flex flex-col gap-md w-full items-center">
             <input
               className={CSS_INPUT}
-              placeholder={t('signin.username')}
+              placeholder={t('user.username')}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />

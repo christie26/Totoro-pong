@@ -66,7 +66,7 @@ export default function ChooseNickname({
   return (
     <div className="w-[500px] h-[500px]">
       <div className="w-2xl h-[400px] bg-light-background rounded-lg flex flex-col justify-center items-center">
-        <h2 className="mb-xl">{t('signin.username.instruction')}</h2> {render()}
+        <h2 className="mb-xl">{t('user.username.instruction')}</h2> {render()}
       </div>
     </div>
   );
@@ -86,18 +86,18 @@ export default function ChooseNickname({
                 className="ml-md mr-md border-2 border-gray p-[2px]"
               />
               <p className="text-sm text-dark-gray ml-md mt-md">
-                {t('signin.username.rule1')} <br />
-                {t('signin.username.rule2')}
+                {t('user.username.rule1')} <br />
+                {t('user.username.rule2')}
               </p>
               {showSuccessToast && (
-                <div className={css}>{t('signin.username.ok')}</div>
+                <div className={css}>{t('user.username.ok')}</div>
               )}
               {showFailToast && (
-                <div className={css}>{t('signin.username.used')}</div>
+                <div className={css}>{t('user.username.used')}</div>
               )}
             </div>
             <Button onClick={handleButtonClick} disabled={!isValid}>
-              {t('signin.username.double-check')}
+              {t('user.username.double-check')}
             </Button>
           </div>
           <div className="self-end mt-xl">

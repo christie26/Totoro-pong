@@ -3,9 +3,14 @@
     "logout": "로그아웃",
     "language": "언어"
   },
+  "user": {
+    "username": "사용자 이름",
+    "email": "이메일",
+    "first-name": "이름",
+    "last-name": "성"
+  },
   "signin": {
     "title": "핑퐁 월드에 오신 것을 환영합니다 🏓",
-    "username": "사용자 이름",
     "password": "비밀번호",
     "login": "로그인",
     "login42": "42로 로그인",
@@ -15,10 +20,6 @@
   },
   "signup": {
     "title": "계정을 생성하세요",
-    "username": "사용자 이름",
-    "email": "이메일",
-    "firstName": "이름",
-    "lastName": "성",
     "avatar": "아바타를 선택하세요",
     "submit": "회원가입",
     "usernamePlaceholder": "사용자 이름을 입력하세요",
@@ -37,5 +38,15 @@
   },
   "friend": {
     "search-friend": "친구 검색"
+  },
+  "setting": {
+    "account-setting": "계정 설정",
+    "current-password": "현재 비밀번호",
+    "new-password": "새 비밀번호",
+    "confirm-new-password": "새 비밀번호 확인",
+    "edit-profile": "프로필 수정",
+    "update-password": "비밀번호 변경",
+    "save": "저장",
+    "cancel": "취소"
   }
 }

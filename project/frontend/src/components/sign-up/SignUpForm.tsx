@@ -42,24 +42,24 @@ export default function SignUpForm({ form, setForm, onSubmit }: Props) {
       />
 
       <Input
-        label={t('signup.email')}
+        label={t('user.email')}
         value={form.email}
         onChange={handleChange('email')}
-        placeholder={t('signup.emailPlaceholder')}
+        placeholder={t('user.emailPlaceholder')}
       />
 
       <Input
-        label={t('signup.firstName')}
+        label={t('user.first-name')}
         value={form.firstName}
         onChange={handleChange('firstName')}
-        placeholder={t('signup.firstNamePlaceholder')}
+        placeholder={t('user.first-namePlaceholder')}
       />
 
       <Input
-        label={t('signup.lastName')}
+        label={t('user.last-name')}
         value={form.lastName}
         onChange={handleChange('lastName')}
-        placeholder={t('signup.lastNamePlaceholder')}
+        placeholder={t('user.last-namePlaceholder')}
       />
       <ChooseAvatar avatars={avatars} onChooseClick={handleChooseClick} />
       <button
