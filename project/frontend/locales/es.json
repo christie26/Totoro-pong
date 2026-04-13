@@ -1,0 +1,38 @@
+{
+  "common": {
+    "logout": "Cerrar sesión",
+    "language": "Idioma"
+  },
+  "signin": {
+    "title": "Bienvenido a Ping Pong World 🏓",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "login": "Iniciar sesión",
+    "login42": "Iniciar sesión con 42",
+    "loginGoogle": "Iniciar sesión con Google",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "signUp": "¿Aún no tienes cuenta?"
+  },
+  "signup": {
+    "title": "Crea tu cuenta",
+    "username": "Nombre de usuario",
+    "email": "Correo electrónico",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "avatar": "Elige tu avatar",
+    "submit": "Registrarse",
+    "usernamePlaceholder": "Introduce tu nombre de usuario",
+    "firstNamePlaceholder": "Introduce tu nombre",
+    "lastNamePlaceholder": "Introduce tu apellido",
+    "emailPlaceholder": "Introduce tu correo electrónico",
+    "error": {
+      "missing": "Por favor completa todos los campos obligatorios",
+      "failed": "Error en el registro"
+    }
+  },
+  "onboarding": {
+    "title": "Completa tu registro introduciendo tu información",
+    "username": "Elige tu nombre de usuario",
+    "submit": "Finalizar"
+  }
+}
