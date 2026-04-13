@@ -13,15 +13,13 @@ const Navbar = () => {
   const router = useRouter();
   const { api } = useContext(ApiContext);
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const [lang, setLang] = useState<Lang>('en');
   const { t } = useTranslation();
-
+  const lang = i18n.language as Lang;
   const path = usePathname();
   const isAuthPage = path === '/sign-in' || path === '/sign-up';
 
   const toggleLangMenu = () => setIsLangOpen((prev) => !prev);
   const handleLanguageChange = (selected: Lang) => {
-    setLang(selected);
     i18n.changeLanguage(selected);
     localStorage.setItem('lang', selected);
     setIsLangOpen(false);
