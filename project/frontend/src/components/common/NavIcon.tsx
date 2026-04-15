@@ -12,7 +12,7 @@ interface NavIconProps {
 const NavIcon = (props: NavIconProps) => {
   const path = usePathname();
 
-  const isActive = path?.startsWith(`/${props.type}`);
+  const isActive = path?.startsWith(`/${props.type}`) || (props.type === 'video' && path === '/');
 
   const baseClass =
     'w-sm h-sm rounded-full flex items-center justify-center mb-[40px]';
