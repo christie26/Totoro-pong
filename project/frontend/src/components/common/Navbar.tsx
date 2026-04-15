@@ -48,9 +48,9 @@ const Navbar = () => {
         }
       >
         <Logo />
-        <NavIcon type="friend" isAuthPage={isAuthPage} />
         <NavIcon type="video" isAuthPage={isAuthPage} />
-        <NavIcon type="profile" isAuthPage={isAuthPage} />
+        <NavIcon type="friend" isAuthPage={isAuthPage} />
+        <NavIcon type="setting" isAuthPage={isAuthPage} />
         <div className="mt-auto mb-xl flex flex-col gap-lg">
           <div className="relative mt-auto">
             <Button onClick={toggleLangMenu}>
