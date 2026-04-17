@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import MultiSelectDropdown from './video/MultiSelectDropdown';
+import MultiSelectDropdown from './MultiSelectDropdown';
 
 type Video = {
   id: string;
@@ -254,14 +254,13 @@ export function VideoPage() {
       <h2 className="text-xl font-bold">Video Search</h2>
 
       {/* 🔍 Filters */}
-      <div className="grid grid-cols-5 gap-md">
+      <div className="flex felx-row gap-md">
         <input
           placeholder="Search title..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="p-sm border rounded"
+          className="p-sm border rounded h-xs w-[200px] text-sm"
         />
-
         <MultiSelectDropdown
           selectedValues={selectedGenres}
           options={genres}
@@ -269,24 +268,6 @@ export function VideoPage() {
           clearable={true}
           onUpdate={setSelectedGenres}
         />
-
-        <div className="flex gap-sm">
-          <input
-            type="number"
-            placeholder="Start year"
-            value={startYear}
-            onChange={(e) => setStartYear(e.target.value ? Number(e.target.value) : '')}
-            className="p-sm border rounded flex-1"
-          />
-          <input
-            type="number"
-            placeholder="End year"
-            value={endYear}
-            onChange={(e) => setEndYear(e.target.value ? Number(e.target.value) : '')}
-            className="p-sm border rounded flex-1"
-          />
-        </div>
-
         <MultiSelectDropdown
           selectedValues={selectedRatings.map(String)}
           options={ratingOptions.map(String)}
@@ -294,8 +275,27 @@ export function VideoPage() {
           clearable={true}
           onUpdate={(vals) => setSelectedRatings(vals.map(Number))}
         />
+        <div className="flex items-center gap-sm h-xs text-sm bg-default rounded-sm px-xs">
+          <p>
+          Year: 
+          </p>
+          <input
+            placeholder="Start year"
+            value={startYear}
+            onChange={(e) => setStartYear(e.target.value ? Number(e.target.value) : '')}
+            className="p-sm border rounded flex-1 w-lg text-sm h-xs"
+          />
+          <input
+            placeholder="End year"
+            value={endYear}
+            onChange={(e) => setEndYear(e.target.value ? Number(e.target.value) : '')}
+            className="p-sm border rounded flex-1 w-lg text-sm h-xs"
+          />
+        </div>
 
-        <select
+        
+
+        {/* <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
           className="p-sm border rounded"
@@ -303,7 +303,7 @@ export function VideoPage() {
           <option value="title">Title</option>
           <option value="year">Year</option>
           <option value="rating">Rating</option>
-        </select>
+        </select> */}
       </div>
 
       {/* 🎬 Video List */}

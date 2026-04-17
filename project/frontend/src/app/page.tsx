@@ -2,7 +2,7 @@
 
 import withAuth from '@/components/auth/withAuth';
 import { NavbarLayout } from '@/components/common/NavbarLayout';
-import { VideoPage } from '@/components/VideoPage';
+import { VideoPage } from '@/components/video/VideoPage';
 
 function Page() {
   return (
